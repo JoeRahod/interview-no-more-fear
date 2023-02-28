@@ -128,3 +128,20 @@
 * TCP Connection
  1. Connection: keep-alive/close  (开启或者关闭)
  2. HTTP2 只需要建立一个TCP长连接（同域名下）
+
+### 数据协商
+* 请求：
+ 1. Accept 客户端期望接受什么时类型
+ 2. Accept-Encoding 压缩方式 gzip, deflate, br
+ 3. Accept-language 语言  zh-CN,zh;
+ 4. user-Agent 用户设备信息  处理浏览器兼容需要的 Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36
+* 返回
+ 1. Content-type 服务端对客户端的实际返回内容类型
+ 2. Content-Encoding
+ 3. Content-Language
+
+### CSP content-secure-policy 内容安全策略
+* 资源类型 'script-src \'self\'; form-action \'self\'; report-uri/report'
+
+### HTTPS
+* http是明文传输
