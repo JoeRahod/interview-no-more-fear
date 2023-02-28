@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CORS跨域</title>
+</head>
+<body>
+  <!-- <script>
+     const xhr = new XMLHttpRequest();
+     // 跨域
+     xhr.open('GET', 'http://127.0.0.1:8080')
+     xhr.send();
+     
+  </script> -->
+
+  <!-- 前端解决跨域 -->
+  <!-- <script src="http://127.0.0.1:8080"></script> -->
+  <!-- img a script请求资源无跨域 -->
+
+  <script>
+    fetch('http://127.0.0.1:8080', {
+      method: 'PUT',
+      headers: {'X-Test-Cors': 'Joe'}
+    })
+  </script>
+</body>
+</html>
