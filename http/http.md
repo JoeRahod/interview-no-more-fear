@@ -110,3 +110,15 @@
   a. 数据签名
   b. 配合if-Match 或 if-None-Match
   c. 对比资源的签名判断是否走缓存
+------------------------------------------
+
+### Cookie 键值对 可设置多个
+* Cookie 客户端将服务器设置的Cookie返回到服务器
+* Set-Cookie 服务器向客户端设置Cookies
+
+服务器在响应消息中用Set-Cookie 头把Cookie内容发送给客户端，客户端在新的请求头中自动将同样的内容携带在Cookie 头中发送给服务端，从而实现会话保持
+
+属性：
+1. max-age 和 expires设置过期时间
+2. Secure只在https发送
+⭐️3. 服务端设置HttpOnly，导致前端无法document.cookie访问 
