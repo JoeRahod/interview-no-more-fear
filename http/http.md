@@ -122,3 +122,9 @@
 1. max-age 和 expires设置过期时间
 2. Secure只在https发送
 ⭐️3. 服务端设置HttpOnly，导致前端无法document.cookie访问 
+------------------------------------------
+
+### HTTP长连接
+* TCP Connection
+ 1. Connection: keep-alive/close  (开启或者关闭)
+ 2. HTTP2 只需要建立一个TCP长连接（同域名下）
