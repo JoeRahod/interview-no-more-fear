@@ -108,5 +108,5 @@
   b. 对比上次修改时间验证资源是否需要更新
 2. Etag
   a. 数据签名
-  b. 配合if-Match 或 if-Non-Match
+  b. 配合if-Match 或 if-None-Match
   c. 对比资源的签名判断是否走缓存
