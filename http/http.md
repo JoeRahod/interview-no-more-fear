@@ -128,3 +128,5 @@
 * TCP Connection
  1. Connection: keep-alive/close  (开启或者关闭)
  2. HTTP2 只需要建立一个TCP长连接（同域名下）
+
+![https](./https.png "http")
