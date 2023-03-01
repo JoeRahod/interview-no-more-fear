@@ -90,12 +90,18 @@ GET /api/xxx HTTP 1.1
 3. 样式计算
 4. DOM树+CSS树 --> 布局树 layout tree
 5. 根据布局树生产图层树 layer tree (下面的特定情况触发)
-6. paint绘制 （一个一个绘制(一个一个div元素等)）
+6. paint绘制-GPU完成 （一个一个绘制(一个一个div元素等)）
 7. 组合图层 composition layer 生产最终的页面
 
-有什么会被称为图层（F12 layer 类似 ps的图层）？
+* 有什么会被称为图层（F12 layers查看 类似 ps的图层）？
 1. 3d转换
 2. postion fixed
 3. video标签
 4. canvas标签
-5. css3动画
+5. css3动画 animation
+
+浏览器每次可以接收多大的数据？
+* 64kb 
+* html的img标签src插入一张图可以测试为什么是 64kb
+* 仍是F12 Performance -> 下面的event log 的 Activity 里面的 parse HTML 的 同时有很多次的receice Data 再看右边的 encodeed data 的65536 byte / 1024 = 64kb --> 同时有很多次的receice data 然后 finish loading --> 证明结束
+## 重排、重绘 （性能优化切入点）
