@@ -140,7 +140,7 @@
  2. Content-Encoding
  3. Content-Language
 
-### CSP content-secure-policy 内容安全策略
+### CSP content-secure-policy 内容安全策略(解决XSS攻击)
 * 资源类型 'script-src \'self\'; form-action \'self\'; report-uri/report'
 
 ### HTTPS
@@ -159,3 +159,20 @@
 7. 将信息和随机值混在一起进行对称加密
 8. 将加密的内容发送给客户端
 9. 客户端用秘钥解密信息
+
+## HTTP2
+带宽（100m宽带理论峰值为12.5m/s http1.1,发送请求速度为上行带宽,服务端速度返回为下行带宽）
+http 痛点
+* http0.9 只传输html 数据简单 只有请求行 没有请求头响应头
+* http1.0 解决多种类型文件下载 通过请求头和响应头交互 新增cache缓存 状态码 用户代理
+* http1.1 对文件的传输速度-新增持久化连接connection（默认open打开），用于提升连接效率（但是http1.1对带宽利用不理想，不能占满带宽，上面的带宽解释）
+
+* http2.2
+
+为什么http1.1 很难占满带宽
+1. tcp的慢启动（首屏渲染时间多少都会降低 因为html css js 本来就不算大）
+2. 多个tcp链接，会竞争带宽，不同tcp不能协商哪些资源先下载
+3. http1.1队头阻塞问题
+
+* 基于以上问题  提出http2.0 的多路复用 --- 一个域名只使用一个tcp长连接进行（只慢启动一次）
+* https://www.yuque.com/i_geek/rules/hld2k8

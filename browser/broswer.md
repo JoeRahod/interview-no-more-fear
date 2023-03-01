@@ -104,4 +104,19 @@ GET /api/xxx HTTP 1.1
 * 64kb 
 * html的img标签src插入一张图可以测试为什么是 64kb
 * 仍是F12 Performance -> 下面的event log 的 Activity 里面的 parse HTML 的 同时有很多次的receice Data 再看右边的 encodeed data 的65536 byte / 1024 = 64kb --> 同时有很多次的receice data 然后 finish loading --> 证明结束
-## 重排、重绘 （性能优化切入点）
+## 重排、重绘 （性能优化切入点）看F12performance的main 渲染流水线
+浏览器是根据图层来渲染的，如果非要重排重绘，尽量考虑把变化的元素提升为一个图层，如果F12的layouts里面有三个图层那么就会三次paint，比如will-change: transform; transform: translateX(100px)提升为图层;多用CSS3代替top、left等;
+
+* layout重排：重新计算元素的集合（位置信息、宽高等 先layout 后paint 说明重排一定会重绘）
+* paint重排：元素在计算机的视觉表现（颜色等 只有重绘）
+
+优化：
+1. 直接使用transform会触发重排和重绘
+2. 配合postion: relative只会触发 只会触发重绘
+3. 元素作为一个单独的图层处理使用transfrom不会触发重绘也不会触发重排,非常节省浏览器性能（will-change: transform）
+
+* opacity代替visibility更好
+1. opacity单独使用会重排会重绘
+2. opacity配合图层既不会layout也不会Paint，即不会重排也不会重绘
+
+* 不要获取DOM属性放到循环遍历中
